@@ -9,4 +9,12 @@ router.get("/", function (req, res) {
   });
 });
 
+// Count users route.
+router.get("/hello-world", function (req, res) {
+  res.status(200).json({
+    success: true,
+    message: "Hello world!"
+  });
+});
+
 module.exports = router;
