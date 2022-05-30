@@ -13,15 +13,15 @@
     "update": "npm run install_server && npm run install_client"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "concurrently": "^6.2.1",
-    "nodemon": "^2.0.12"
+    "concurrently": "^7.2.1",
+    "nodemon": "^2.0.16"
   },
   "main": "server.js",
   "repository": {

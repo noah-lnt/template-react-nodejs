@@ -1,37 +1,38 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import routes from "./routes";
 
-import AuthContext from "./context/AuthContext"
+import AuthContext from "./context/AuthContext";
 
 export default class App extends React.Component {
   render() {
     return (
-      <AuthContext.Provider value={
-        {}
-      }>
-        <Router basename={process.env.REACT_APP_BASENAME || ""}>
-          <div>
+      <AuthContext.Provider value={{}}>
+        <BrowserRouter basename={process.env.REACT_APP_BASENAME || ""}>
+          <Routes>
             {routes.map((route, index) => {
               return (
                 <Route
                   key={index}
                   path={route.path}
                   exact={route.exact}
-                  component={(props) => {
-                    return (
-                      <route.layout {...props} >
-                        <route.component {...props} />
-                      </route.layout>
-                    );
-                  }
-                  }
+                  element={<Params route={route} />}
                 />
               );
             })}
-          </div>
-        </Router>
+          </Routes>
+        </BrowserRouter>
       </AuthContext.Provider>
-    )
+    );
   }
 }
+
+const Params = (props) => {
+  let { folderId } = useParams();
+
+  return (
+    <props.route.layout>
+      <props.route.component folderId={folderId} />
+    </props.route.layout>
+  );
+};
